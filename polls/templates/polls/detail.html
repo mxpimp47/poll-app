@@ -1,49 +1,16 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Detail</title>
-    {% load staticfiles %}
+{% extends "base.html" %}
 
-    <link rel="stylesheet" type="text/css" href="{% static 'polls/gumby.css' %}" />
-
-  </head>
-  <body>
-    <div class="navbar">
-      <div class="row" id="nav1">
-        <!-- Toggle for mobile navigation, targeting the <ul> -->
-        <a class="toggle" gumby-trigger="#nav1 > ul" href="#"><i class="icon-menu"></i></a>
-
-        <ul class="eight columns">
-          <li><a href="/polls">Polls</a></li>
-          <li>
-            <a href="#">Results</a>
-            <div class="dropdown">
-              <ul>
-                <li><a href="#">Polls</a></li>
-                <li><a href="#">Results</a></li>
-                <li><a href="#">Sass</a></li>
-                <li><a href="#">JavaScript</a></li>
-                <li><a href="#">Demo</a></li>
-              </ul>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div class="row">
-      <h1>{{ poll.question }}</h1>
-
-      {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-
-      <form action="{% url 'polls:vote' poll.id %}" method="post">
-        {% csrf_token %}
-        {% for choice in poll.choice_set.all %}
-          <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
-          <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br />
-        {% endfor %}
-        <input type="submit" value="Vote" />
-      </form>
-    </div>
-  </body>
-</html>
+{% block content %}
+  <div class="row">
+    <h1>{{ poll.question }}</h1>
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    <form action="{% url 'polls:vote' poll.id %}" method="post">
+      {% csrf_token %}
+      {% for choice in poll.choice_set.all %}
+	<input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
+	<label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br />
+      {% endfor %}
+      <input type="submit" value="Vote" />
+    </form>
+  </div>
+{% endblock %}

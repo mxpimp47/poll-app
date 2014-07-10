@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/gumby.css' %}" />
+  </head>
+  <body>
+    {% include '_navigation.html' %}
+    {% block content %}{% endblock %}
+  </body>
+</html>

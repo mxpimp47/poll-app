@@ -1,48 +1,48 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <title>Polls</title>
-  {% load staticfiles %}
+  <head>
+    <meta charset="UTF-8">
+    <title>Polls</title>
+    {% load staticfiles %}
 
-  <link rel="stylesheet" type="text/css" href="{% static 'polls/gumby.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/gumby.css' %}" />
 
-</head>
-<body>
-	<div class="navbar">
-		<div class="row" id="nav1">
-		  <!-- Toggle for mobile navigation, targeting the <ul> -->
-		  <a class="toggle" gumby-trigger="#nav1 > ul" href="#"><i class="icon-menu"></i></a>
-		  
-		  <ul class="eight columns">
-		    <li><a href="/polls">Polls</a></li>
-		    <li>
-		      <a href="#">Results</a>
-		      <div class="dropdown">
-		        <ul>
-		          <li><a href="#">Polls</a></li>
-		          <li><a href="#">Results</a></li>
-		          <li><a href="#">Sass</a></li>
-		          <li><a href="#">JavaScript</a></li>
-		          <li><a href="#">Demo</a></li>
-		        </ul>
-		      </div>
-		    </li>
-		  </ul>
-		</div>
-	</div>
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="row" id="nav1">
+        <!-- Toggle for mobile navigation, targeting the <ul> -->
+        <a class="toggle" gumby-trigger="#nav1 > ul" href="#"><i class="icon-menu"></i></a>
 
-	<div class="row">
-		<h1>Polls</h1>
-			{% if latest_poll_list %}
-		<ul>
-			{% for poll in latest_poll_list %}
-				<li><a href="{% url 'polls:detail' poll.id %}">{{ poll.question }}</a></li>
-			{% endfor %}
-		</ul>
-			{% else %}
-		<p>No polls are available.</p>
-			{% endif %}
-	</div>
-</body>
+        <ul class="eight columns">
+          <li><a href="/polls">Polls</a></li>
+          <li>
+            <a href="#">Results</a>
+            <div class="dropdown">
+              <ul>
+                <li><a href="#">Polls</a></li>
+                <li><a href="#">Results</a></li>
+                <li><a href="#">Sass</a></li>
+                <li><a href="#">JavaScript</a></li>
+                <li><a href="#">Demo</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <h1>Polls</h1>
+      {% if latest_poll_list %}
+        <ul>
+          {% for poll in latest_poll_list %}
+            <li><a href="{% url 'polls:detail' poll.id %}">{{ poll.question }}</a></li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>No polls are available.</p>
+      {% endif %}
+    </div>
+  </body>
 </html>

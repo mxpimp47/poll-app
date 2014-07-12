@@ -11,12 +11,14 @@
   </head>
   <body>
     {% include '_navigation.html' %}
+    {% include '_messages.html' %}
+
     {% block content %}{% endblock %}
     <script src="{% static '/static/js/libs/jquery-2.0.2.min.js' %}"></script>
     <script gumby-touch="js/libs" src="{% static '/static/js/libs/gumby.js' %}"></script>
     <script src="{% static '/static/js/libs/ui/gumby.navbar.js' %}"></script>
     <script src="{% static '/static/js/libs/gumby.init.js' %}"></script>
     <script src="{% static '/static/js/plugins.js' %}"></script>
-	<script src="{% static '/static/js/main.js' %}"></script>
+    <script src="{% static '/static/js/main.js' %}"></script>
   </body>
 </html>

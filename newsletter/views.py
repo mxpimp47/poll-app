@@ -1,10 +1,12 @@
-from django.shortcuts import get_object_or_404, render
-from django.http import HttpResponseRedirect
-from django.core.urlresolvers import reverse
-from django.views import generic
+from django.contrib.messages.views import SuccessMessageMixin
+from django.core.urlresolvers import reverse_lazy
+from django.views.generic import CreateView
 
-from newsletter.models import NewsLetter
+from .forms import SignUpForm
 
-class NewsLetterView(generic.NewsLetterView):
-    model = NewsLetter
+
+class SignUp(SuccessMessageMixin, CreateView):
+    form_class = SignUpForm
     template_name = 'newsletter/signup.html'
+    success_message = "%(email_field)s was created successfully"
+    success_url = reverse_lazy('newsletter-signup')

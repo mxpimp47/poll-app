@@ -5,10 +5,9 @@
 {% block content %}
   <div class="row">
     <h1>Sign up</h1>
-    <form action="POST" autocomplete="on">
-      First name:<input type="text" name="first_name"><br>
-      Last name: <input type="text" name="last_name"><br>
-      E-mail: <input type="email" name="email_field" autocomplete="off"><br>
+    <form action="{% url 'newsletter-signup' %}" method="POST" autocomplete="on">
+      {% csrf_token %}
+      {{ form.as_p }}
       <input type="submit">
     </form>
   </div>

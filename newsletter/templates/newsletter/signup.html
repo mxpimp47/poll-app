@@ -8,7 +8,9 @@
     <form action="{% url 'newsletter-signup' %}" method="POST" autocomplete="on">
       {% csrf_token %}
       {{ form.as_p }}
-      <input class="medium primary btn" type="submit">
+      <div class="medium primary btn">
+	<input type="submit">
+      </div>
     </form>
   </div>
 {% endblock %}

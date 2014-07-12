@@ -4,7 +4,7 @@ from django.db import models
 class NewsLetter(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
-    email_field = models.CharField(max_length=254)
+    email_field = models.EmailField(max_length=254)
 
-    def __unicode__(self): 
+    def __unicode__(self):
     	return self.email_field

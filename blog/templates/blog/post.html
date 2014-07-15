@@ -2,7 +2,8 @@
      
     {% block title %}{{post.title}}{% endblock %}
      
-    {% block content %}
+{% block content %}
+<div class="row">
     <article>
         <header>
             <h1> {{post.title}} </h1>
@@ -18,4 +19,5 @@
         </p>
         {{post.content|safe}}
     </article>
+</div>
     {% endblock %}

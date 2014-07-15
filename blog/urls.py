@@ -5,5 +5,5 @@ admin.autodiscover()
 
 urlpatterns = [
     url(r'^$', 'blog.views.index'),
-    url(r'^(?P<slug>[\w\-]+)/$', 'blog.views.post'),
+    url(r'^(?P<slug>[\w\-]+)/$', 'blog.views.post', name='blog-detail'),
     ]

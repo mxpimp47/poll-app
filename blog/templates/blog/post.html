@@ -1,23 +1,24 @@
 {% extends 'base.html' %}
-     
-    {% block title %}{{post.title}}{% endblock %}
-     
+
+{% block title %}{{ post.title }}{% endblock %}
+
 {% block content %}
-<div class="row">
+  <div class="row">
     <article>
-        <header>
-            <h1> {{post.title}} </h1>
-            <p>
-                Posted on
-                <time datetime="{{post.created|date:"c"}}">
-                {{post.created|date}}
-                </time>
-            </p>
-        </header>
-        <p class="description">
-            {{post.description}}
+      <header>
+        <h1>{{ post.title }} </h1>
+        <p>
+          Posted on
+          <time datetime="{{ post.created|date:"c" }}">
+            {{ post.created|date }}
+          </time>
         </p>
-        {{post.content|safe}}
+      </header>
+      <p class="description">
+        {{ post.description }}
+       <img src="{{ MEDIA_URL }}{{ post.photo }} ">
+      </P>
+      {{ post.content|safe }}
     </article>
-</div>
-    {% endblock %}
+  </div>
+{% endblock %}

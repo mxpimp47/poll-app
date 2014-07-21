@@ -1,9 +1,16 @@
-from django.conf.urls import patterns, include, url
-from django.contrib import admin
+from django.conf.urls import url
 
-admin.autodiscover()
+from .views import index, post
 
 urlpatterns = [
-    url(r'^$', 'blog.views.index'),
-    url(r'^(?P<slug>[\w\-]+)/$', 'blog.views.post', name='blog-detail'),
-    ]
+    url(
+        regex=r'^$',
+        view=index,
+        name='blog-index'
+    ),
+    url(
+        regex=r'^(?P<slug>[\w\-]+)/$',
+        view=post,
+        name='blog-detail'
+    ),
+]
